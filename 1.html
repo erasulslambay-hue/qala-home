@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QALA HOME — Жылжымайтын мүлік</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f6f2;
+            color: #17221c;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 25px;
+
+            border-bottom: 1px solid #dedfd8;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #a5bb45;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #737b74;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #17221c;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .header-buttons button {
+            width: 40px;
+            height: 40px;
+
+            border: 1px solid #dedfd8;
+            background: white;
+
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+
+            min-height: 600px;
+
+            padding: 60px 25px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 60px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            color: #1d4b39;
+            font-size: 11px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+
+            font-size: clamp(50px, 7vw, 85px);
+
+            line-height: 1;
+
+            letter-spacing: -4px;
+        }
+
+        .hero h1 em {
+            color: #1d4b39;
+        }
+
+        .hero-text {
+            max-width: 550px;
+
+            color: #737b74;
+
+            margin: 25px 0;
+
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 14px 22px;
+
+            border-radius: 6px;
+
+            border: 1px solid #1d4b39;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .primary {
+            background: #1d4b39;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #28624a;
+        }
+
+        /* HERO IMAGE */
+
+        .hero-image {
+            height: 470px;
+
+            border-radius: 20px;
+
+            background-image:
+                url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            position: relative;
+        }
+
+        .hero-badge {
+            position: absolute;
+
+            bottom: 20px;
+            left: 20px;
+
+            background: rgba(255,255,255,0.95);
+
+            padding: 15px 20px;
+
+            border-radius: 8px;
+        }
+
+        .hero-badge strong {
+            display: block;
+
+            font-family: Georgia, serif;
+
+            font-size: 25px;
+        }
+
+        .hero-badge span {
+            color: #737b74;
+
+            font-size: 11px;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search-box {
+            max-width: 1000px;
+
+            margin: -35px auto 0;
+
+            background: white;
+
+            padding: 18px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr 1fr auto;
+
+            gap: 10px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .search-item label {
+            display: block;
+
+            font-size: 10px;
+
+            color: #737b74;
+
+            margin-bottom: 5px;
+        }
+
+        .search-item select {
+            width: 100%;
+
+            border: 0;
+
+            padding: 8px;
+
+            outline: none;
+
+            background: white;
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 110px 25px;
+        }
+
+        .section-title {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: end;
+
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-family: Georgia, serif;
+
+            font-size: 43px;
+        }
+
+        .section-title a {
+            font-size: 13px;
+
+            border-bottom: 1px solid;
+        }
+
+        /* ================= PROPERTY CARDS ================= */
+
+        .property-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .property-card {
+            background: white;
+
+            border: 1px solid #dedfd8;
+
+            border-radius: 13px;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.08);
+        }
+
+        .property-image {
+            height: 230px;
+
+            background-size: cover;
+
+            background-position: center;
+
+            position: relative;
+        }
+
+        .house1 {
+            background-image:
+                url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .house2 {
+            background-image:
+                url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .house3 {
+            background-image:
+                url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .house4 {
+            background-image:
+                url("https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .house5 {
+            background-image:
+                url("https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .house6 {
+            background-image:
+                url("https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .tag {
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            background: #c9dc73;
+
+            padding: 6px 10px;
+
+            border-radius: 4px;
+
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .heart {
+            position: absolute;
+
+            top: 15px;
+            right: 15px;
+
+            width: 35px;
+            height: 35px;
+
+            border: none;
+
+            background: white;
+
+            border-radius: 50%;
+
+            font-size: 20px;
+
+            cursor: pointer;
+        }
+
+        .heart.active {
+            color: red;
+        }
+
+        .property-info {
+            padding: 20px;
+        }
+
+        .property-info small {
+            color: #737b74;
+
+            font-size: 9px;
+
+            letter-spacing: 1.5px;
+        }
+
+        .property-info h3 {
+            font-family: Georgia, serif;
+
+            font-size: 22px;
+
+            margin: 6px 0;
+        }
+
+        .property-info p {
+            color: #737b74;
+
+            font-size: 12px;
+
+            margin-bottom: 12px;
+        }
+
+        .property-info strong {
+            font-size: 17px;
+
+            display: block;
+        }
+
+        .property-info a {
+            display: inline-block;
+
+            margin-top: 10px;
+
+            color: #1d4b39;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        /* ================= STATISTICS ================= */
+
+        .statistics {
+            background: #1d4b39;
+
+            color: white;
+
+            padding: 55px 25px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            text-align: center;
+        }
+
+        .statistics strong {
+            display: block;
+
+            font-family: Georgia, serif;
+
+            font-size: 35px;
+        }
+
+        .statistics span {
+            color: #b8c8bf;
+
+            font-size: 11px;
+        }
+
+        /* ================= WHY ================= */
+
+        .why-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+            margin-top: 40px;
+        }
+
+        .why-card {
+            border-top: 1px solid #dedfd8;
+
+            padding: 25px 5px;
+        }
+
+        .why-card strong {
+            color: #1d4b39;
+        }
+
+        .why-card h3 {
+            font-family: Georgia, serif;
+
+            margin: 25px 0 8px;
+        }
+
+        .why-card p {
+            color: #737b74;
+
+            font-size: 13px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 55px 25px 30px;
+
+            border-top: 1px solid #dedfd8;
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr 1fr;
+
+            gap: 30px;
+        }
+
+        footer h4 {
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        footer p,
+        footer a {
+            color: #737b74;
+
+            font-size: 12px;
+
+            display: block;
+
+            margin-top: 8px;
+        }
+
+        /* ================= SEARCH MODAL ================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0,0,0,0.6);
+
+            z-index: 100;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+
+            width: 90%;
+
+            max-width: 600px;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+
+            right: 20px;
+            top: 15px;
+
+            border: none;
+
+            background: none;
+
+            font-size: 28px;
+
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            font-family: Georgia, serif;
+
+            font-size: 35px;
+
+            margin-bottom: 20px;
+        }
+
+        .modal-content input {
+            width: 100%;
+
+            padding: 15px;
+
+            border: 1px solid #dedfd8;
+
+            border-radius: 6px;
+
+            outline: none;
+        }
+
+        .search-result {
+            display: block;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #dedfd8;
+
+            font-size: 13px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 800px) {
+
+            nav {
+                display: none;
+
+                position: absolute;
+
+                top: 75px;
+
+                left: 15px;
+                right: 15px;
+
+                background: white;
+
+                padding: 20px;
+
+                border: 1px solid #dedfd8;
+
+                border-radius: 10px;
+
+                flex-direction: column;
+
+                z-index: 20;
+            }
+
+            nav.open {
+                display: flex;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+
+                padding-top: 45px;
+            }
+
+            .hero-image {
+                height: 350px;
+            }
+
+            .search-box {
+                margin: 20px 15px;
+
+                grid-template-columns: 1fr;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 75px 22px;
+            }
+
+            .section-title {
+                display: block;
+            }
+
+            .section-title a {
+                display: inline-block;
+
+                margin-top: 15px;
+            }
+
+            .statistics {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .hero h1 {
+                font-size: 58px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <a href="#" class="logo">
+        QALA<span>.</span>
+    </a>
+
+    <nav id="navigation">
+
+        <a href="#" class="active">
+            Басты бет
+        </a>
+
+        <a href="#houses">
+            Үйлер
+        </a>
+
+        <a href="#about">
+            Біз туралы
+        </a>
+
+        <a href="#contact">
+            Байланыс
+        </a>
+
+    </nav>
+
+    <div class="header-buttons">
+
+        <button id="searchButton">
+            ⌕
+        </button>
+
+        <button class="menu" id="menuButton">
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div>
+
+        <p class="eyebrow">
+            QALA HOME • ALMATY
+        </p>
+
+        <h1>
+            Өзіңе лайық
+            <br>
+            <em>үйді тап.</em>
+        </h1>
+
+        <p class="hero-text">
+            Қазақстандағы заманауи үйлер мен
+            пәтерлерді бір жерден іздеңіз.
+            Баға, аудан және орналасу бойынша
+            өзіңізге сәйкес үйді таңдаңыз.
+        </p>
+
+        <a href="#houses" class="btn primary">
+            Үйлерді қарау →
+        </a>
+
+    </div>
+
+
+    <div class="hero-image">
+
+        <div class="hero-badge">
+
+            <strong>
+                850+
+            </strong>
+
+            <span>
+                сатылымдағы нысан
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SEARCH ================= -->
+
+<section class="search-box">
+
+    <div class="search-item">
+
+        <label>
+            Қала
+        </label>
+
+        <select>
+
+            <option>
+                Алматы
+            </option>
+
+            <option>
+                Астана
+            </option>
+
+            <option>
+                Шымкент
+            </option>
+
+            <option>
+                Қарағанды
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="search-item">
+
+        <label>
+            Мүлік түрі
+        </label>
+
+        <select>
+
+            <option>
+                Барлығы
+            </option>
+
+            <option>
+                Пәтер
+            </option>
+
+            <option>
+                Жеке үй
+            </option>
+
+            <option>
+                Таунхаус
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="search-item">
+
+        <label>
+            Бағасы
+        </label>
+
+        <select>
+
+            <option>
+                Бағасы
+            </option>
+
+            <option>
+                20 млн ₸ дейін
+            </option>
+
+            <option>
+                20–40 млн ₸
+            </option>
+
+            <option>
+                40 млн ₸ жоғары
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <button class="btn primary" onclick="searchHouse()">
+        Іздеу
+    </button>
+
+</section>
+
+
+<!-- ================= HOUSES ================= -->
+
+<section class="section" id="houses">
+
+    <div class="section-title">
+
+        <div>
+
+            <p class="eyebrow">
+                FEATURED
+            </p>
+
+            <h2>
+                Таңдаулы үйлер
+            </h2>
+
+        </div>
+
+        <a href="#">
+            Барлығын көру →
+        </a>
+
+    </div>
+
+
+    <div class="property-grid">
+
+
+        <!-- HOUSE 1 -->
+
+        <article class="property-card">
+
+            <div class="property-image house1">
+
+                <span class="tag">
+                    Жаңа
+                </span>
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="property-info">
+
+                <small>
+                    АЛМАЛЫ, АЛМАТЫ
+                </small>
+
+                <h3>
+                    Жайлы заманауи үй
+                </h3>
+
+                <p>
+                    4 бөлме · 180 м² · 2 қабат
+                </p>
+
+                <strong>
+                    78 000 000 ₸
+                </strong>
+
+                <a href="#">
+                    Толық ақпарат →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- HOUSE 2 -->
+
+        <article class="property-card">
+
+            <div class="property-image house2">
+
+                <span class="tag">
+                    TOP
+                </span>
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="property-info">
+
+                <small>
+                    БҰҚАР ЖЫРАУ
+                </small>
+
+                <h3>
+                    City View Residence
+                </h3>
+
+                <p>
+                    3 бөлме · 96 м² · 9 қабат
+                </p>
+
+                <strong>
+                    52 500 000 ₸
+                </strong>
+
+                <a href="#">
+                    Толық ақпарат →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- HOUSE 3 -->
+
+        <article class="property-card">
+
+            <div class="property-image house3">
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="property-info">
+
+                <small>
+                    ЕССЕНТАЙ, АЛМАТЫ
+                </small>
+
+                <h3>
+                    Premium Apartment
+                </h3>
+
+                <p>
+                    2 бөлме · 74 м² · 14 қабат
+                </p>
+
+                <strong>
+                    45 900 000 ₸
+                </strong>
+
+                <a href="#">
+                    Толық ақпарат →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- HOUSE 4 -->
+
+        <article class="property-card">
+
+            <div class="property-image house4">
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="property-info">
+
+                <small>
+                    МЕДЕУ, АЛМАТЫ
+                </small>
+
+                <h3>
+                    Mountain House
+                </h3>
+
+                <p>
+                    5 бөлме · 240 м² · 2 қабат
+                </p>
+
+                <strong>
+                    115 000 000 ₸
+                </strong>
+
+                <a href="#">
+                    Толық ақпарат →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- HOUSE 5 -->
+
+        <article class="property-card">
+
+            <div class="property-image house5">
+
+                <span class="tag">
+                    TOP
+                </span>
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="property-info">
+
+                <small>
+                    БАЯНДАУЫЛ
+                </small>
+
+                <h3>
+                    Green Townhouse
+                </h3>
+
+                <p>
+                    4 бөлме · 155 м² · 2 қабат
+                </p>
+
+                <strong>
+                    63 000 000 ₸
+                </strong>
+
+                <a href="#">
+                    Толық ақпарат →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- HOUSE 6 -->
+
+        <article class="property-card">
+
+            <div class="property-image house6">
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="property-info">
+
+                <small>
+                    ОРБИТА
+                </small>
+
+                <h3>
+                    Light Apartment
+                </h3>
+
+                <p>
+                    3 бөлме · 88 м² · 7 қабат
+                </p>
+
+                <strong>
+                    39 800 000 ₸
+                </strong>
+
+                <a href="#">
+                    Толық ақпарат →
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="statistics">
+
+    <div>
+        <strong>
+            850+
+        </strong>
+
+        <span>
+            Нысан
+        </span>
+    </div>
+
+    <div>
+        <strong>
+            120+
+        </strong>
+
+        <span>
+            Агент
+        </span>
+    </div>
+
+    <div>
+        <strong>
+            12
+        </strong>
+
+        <span>
+            Қала
+        </span>
+    </div>
+
+    <div>
+        <strong>
+            8 жыл
+        </strong>
+
+        <span>
+            Тәжірибе
+        </span>
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="section" id="about">
+
+    <p class="eyebrow">
+        WHY QALA
+    </p>
+
+    <h2>
+        Үй іздеу енді оңай.
+    </h2>
+
+
+    <div class="why-grid">
+
+        <div class="why-card">
+
+            <strong>
+                01
+            </strong>
+
+            <h3>
+                Тексерілген нысандар
+            </h3>
+
+            <p>
+                Каталогтағы ұсыныстарды
+                мұқият іріктейміз.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <strong>
+                02
+            </strong>
+
+            <h3>
+                Нақты ақпарат
+            </h3>
+
+            <p>
+                Баға, аудан, бөлме саны
+                және орналасуы бір жерде.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <strong>
+                03
+            </strong>
+
+            <h3>
+                Жеке кеңес
+            </h3>
+
+            <p>
+                Үй таңдауға көмектесетін
+                агентпен байланысыңыз.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="contact">
+
+    <div>
+
+        <a class="logo" href="#">
+            QALA<span>.</span>
+        </a>
+
+        <p>
+            Үйің. Қалаң. Өмірің.
+        </p>
+
+    </div>
+
+
+    <div>
+
+        <h4>
+            Навигация
+        </h4>
+
+        <a href="#">
+            Басты бет
+        </a>
+
+        <a href="#houses">
+            Үйлер
+        </a>
+
+        <a href="#about">
+            Біз туралы
+        </a>
+
+    </div>
+
+
+    <div>
+
+        <h4>
+            Байланыс
+        </h4>
+
+        <a href="tel:+77000000000">
+            +7 700 000 00 00
+        </a>
+
+        <a href="mailto:hello@qala.kz">
+            hello@qala.kz
+        </a>
+
+    </div>
+
+
+    <div>
+
+        <h4>
+            Әлеуметтік желі
+        </h4>
+
+        <a href="#">
+            Instagram
+        </a>
+
+        <a href="#">
+            TikTok
+        </a>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= SEARCH MODAL ================= -->
+
+<div class="modal" id="searchModal">
+
+    <div class="modal-content">
+
+        <button class="close" id="closeSearch">
+            ×
+        </button>
+
+        <p class="eyebrow">
+            QALA SEARCH
+        </p>
+
+        <h2>
+            Үй іздеу
+        </h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Мысалы: Алматы, пәтер..."
+        >
+
+        <div id="searchResults"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    /* MOBILE MENU */
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const navigation =
+        document.getElementById("navigation");
+
+    menuButton.addEventListener("click", function () {
+
+        navigation.classList.toggle("open");
+
+    });
+
+
+    /* HEART BUTTON */
+
+    const hearts =
+        document.querySelectorAll(".heart");
+
+    hearts.forEach(function (heart) {
+
+        heart.addEventListener("click", function () {
+
+            heart.classList.toggle("active");
+
+            if (heart.classList.contains("active")) {
+
+                heart.textContent = "♥";
+
+            } else {
+
+                heart.textContent = "♡";
+
+            }
+
+        });
+
+    });
+
+
+    /* SEARCH MODAL */
+
+    const searchButton =
+        document.getElementById("searchButton");
+
+    const searchModal =
+        document.getElementById("searchModal");
+
+    const closeSearch =
+        document.getElementById("closeSearch");
+
+    searchButton.addEventListener("click", function () {
+
+        searchModal.classList.add("active");
+
+        document
+            .getElementById("searchInput")
+            .focus();
+
+    });
+
+
+    closeSearch.addEventListener("click", function () {
+
+        searchModal.classList.remove("active");
+
+    });
+
+
+    searchModal.addEventListener("click", function (event) {
+
+        if (event.target === searchModal) {
+
+            searchModal.classList.remove("active");
+
+        }
+
+    });
+
+
+    /* LIVE SEARCH */
+
+    const houses = [
+
+        {
+            name: "Жайлы заманауи үй",
+            info: "Алматы · Алмалы · 78 000 000 ₸"
+        },
+
+        {
+            name: "City View Residence",
+            info: "Алматы · Бұқар Жырау · 52 500 000 ₸"
+        },
+
+        {
+            name: "Premium Apartment",
+            info: "Алматы · Ессентай · 45 900 000 ₸"
+        },
+
+        {
+            name: "Mountain House",
+            info: "Алматы · Медеу · 115 000 000 ₸"
+        },
+
+        {
+            name: "Green Townhouse",
+            info: "Алматы · Баяндауыл · 63 000 000 ₸"
+        },
+
+        {
+            name: "Light Apartment",
+            info: "Алматы · Орбита · 39 800 000 ₸"
+        }
+
+    ];
+
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    const searchResults =
+        document.getElementById("searchResults");
+
+
+    searchInput.addEventListener("input", function () {
+
+        const query =
+            searchInput.value.toLowerCase().trim();
+
+        searchResults.innerHTML = "";
+
+        if (query === "") {
+
+            return;
+
+        }
+
+
+        const filtered =
+            houses.filter(function (house) {
+
+                return (
+                    house.name
+                        .toLowerCase()
+                        .includes(query)
+                    ||
+                    house.info
+                        .toLowerCase()
+                        .includes(query)
+                );
+
+            });
+
+
+        if (filtered.length === 0) {
+
+            searchResults.innerHTML =
+                "<p style='margin-top:20px;color:#777'>Нысан табылмады.</p>";
+
+            return;
+
+        }
+
+
+        filtered.forEach(function (house) {
+
+            const result =
+                document.createElement("div");
+
+            result.className =
+                "search-result";
+
+            result.innerHTML = `
+                <strong>${house.name}</strong>
+                <br>
+                <span style="color:#777">
+                    ${house.info}
+                </span>
+            `;
+
+            searchResults.appendChild(result);
+
+        });
+
+    });
+
+
+    /* SEARCH BUTTON */
+
+    function searchHouse() {
+
+        document
+            .getElementById("houses")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+    }
+</script>
+</body>
+</html>
